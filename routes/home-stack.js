@@ -6,7 +6,10 @@ import About from '../screens/about';
 
 const screens = {
   Home: {
-    screen: Home
+    screen: Home,
+    navigationOptions: {
+      title: 'BookZone'
+    }
   },
   ReviewDetails: {
     screen: ReviewDetails
@@ -16,6 +19,10 @@ const screens = {
   }
 };
 
-const HomeStack = createStackNavigator(screens);
+const HomeStack = createStackNavigator(screens, {
+  defaultNavigationOptions: {
+    headerStyle: { backgroundColor: '#eee', height: 90 }
+  }
+});
 
 export default createAppContainer(HomeStack);
