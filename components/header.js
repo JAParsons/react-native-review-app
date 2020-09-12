@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text, StyleSheet } from 'react-native';
+import { View, Text, StyleSheet, Image } from 'react-native';
 import { MaterialIcons } from '@expo/vector-icons';
 
 export default Header = ({ navigation, title }) => {
@@ -15,7 +15,11 @@ export default Header = ({ navigation, title }) => {
         onPress={toggleDrawer}
         style={styles.icon}
       />
-      <View>
+      <View style={styles.headerTitle}>
+        <Image
+          source={require('../assets/images/logo.png')}
+          style={styles.headerImage}
+        />
         <Text style={styles.headerText}>{title}</Text>
       </View>
     </View>
@@ -39,5 +43,12 @@ const styles = StyleSheet.create({
   icon: {
     position: 'absolute',
     left: 16
+  },
+  headerImage: {
+    width: 30,
+    height: 30
+  },
+  headerTitle: {
+    flexDirection: 'row'
   }
 });
