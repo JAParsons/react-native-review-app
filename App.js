@@ -1,8 +1,7 @@
 import React, { useState } from 'react';
 import { useFonts } from 'expo-font';
 import { AppLoading } from 'expo';
-import Home from './screens/home';
-import Navigator from './routes/home-stack';
+import Navigator from './routes/drawer';
 
 export default App = () => {
   const [fontsLoaded] = useFonts({
