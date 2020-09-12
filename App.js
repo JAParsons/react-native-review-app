@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useFonts } from 'expo-font';
 import { AppLoading } from 'expo';
 import Home from './screens/home';
+import Navigator from './routes/home-stack';
 
 export default App = () => {
   const [fontsLoaded] = useFonts({
@@ -9,5 +10,5 @@ export default App = () => {
     'nunito-bold': require('./assets/fonts/Nunito-Bold.ttf')
   });
 
-  return !fontsLoaded ? <AppLoading /> : <Home />;
+  return !fontsLoaded ? <AppLoading /> : <Navigator />;
 };
