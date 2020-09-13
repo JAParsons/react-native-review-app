@@ -1,6 +1,7 @@
 import React from 'react';
 import { Button, TextInput, View } from 'react-native';
 import { Formik } from 'formik';
+import * as yup from 'yup';
 import { globalStyles } from '../styles/global';
 
 export default ReviewForm = ({ addReview }) => {
@@ -8,6 +9,7 @@ export default ReviewForm = ({ addReview }) => {
     <View style={globalStyles.container}>
       <Formik
         initialValues={{ title: '', body: '', rating: '' }}
+        validationSchema={reviewSchema}
         onSubmit={(values, actions) => {
           actions.resetForm();
           addReview(values);
@@ -49,3 +51,16 @@ export default ReviewForm = ({ addReview }) => {
     </View>
   );
 };
+
+const reviewSchema = yup.object({
+  title: yup.string().required().min(4),
+  body: yup.string().required().min(8),
+  rating: yup
+    .string()
+    .required()
+    .test(
+      'is-num-1-5',
+      'Rating must be a number',
+      (value) => parseInt(value) < 6 && parseInt(value) > 0
+    )
+});
